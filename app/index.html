@@ -19,6 +19,7 @@
 								<a class="pull-right" href="https://meow.bnw.im/p/{{reply.id.replace('/', '#')}}">#{{reply.id}}</a>
 						</h3>
 						<div class="popover-content">
+								<p class="greentext" ng-repeat="p in reply.replytotext|lines">&gt;{{p}}</p>
 								<p ng-repeat="p in reply.text|lines track by $index">{{p}}</p>
 						</div>
 		        </div>

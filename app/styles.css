@@ -11,6 +11,10 @@
 	position: relative;
 }
 
+.popover-content {
+	overflow: hidden;
+}
+
 .popover.right > .arrow {
 	top: 50px;
 }
@@ -29,4 +33,8 @@
 
 .center {
 	text-align: center;
+}
+
+.greentext {
+	color: green;
 }
