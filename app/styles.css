@@ -1,5 +1,5 @@
 .container {
-	width: 565px;
+	max-width: 565px;
 	margin-top: 25px;
 }
 
