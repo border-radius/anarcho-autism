@@ -13,7 +13,9 @@
 <body ng-controller="Replies">
 		<div class="container">
 				<div class="popover right" ng-repeat="reply in replies">
-						<img class="avatar" ng-src="https://bnw.im/u/{{reply.user}}/avatar/thumb" alt="{{reply.user}}">
+						<a class="avatar" href="https://meow.bnw.im/u/{{reply.user}}">
+							<img ng-src="https://bnw.im/u/{{reply.user}}/avatar/thumb" alt="{{reply.user}}">
+						</a>
 		                <div class="arrow"></div>
 						<h3 class="popover-title">
 								<a href="https://meow.bnw.im/u/{{reply.user}}">@{{reply.user}}</a>
