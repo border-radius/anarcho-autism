@@ -2,7 +2,7 @@ var app = angular.module('bnw-replies', []);
 
 app.filter('lines', function () {
 	return function (text) {
-		return text.split('\n');
+		return text.replace(/\n+/g, '\n').replace(/(^\n|\n$)/g, '').split('\n');
 	};
 });
 
