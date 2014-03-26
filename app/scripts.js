@@ -1,5 +1,11 @@
 var app = angular.module('bnw-replies', ['infiniteScroll']);
 
+app.filter('lines', function () {
+	return function (text) {
+		return text.split('\n');
+	};
+});
+
 app.controller('Replies', function ($scope, $http) {
 	$scope.replies = [];
 	
