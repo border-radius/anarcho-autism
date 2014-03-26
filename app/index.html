@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="bnw-replies">
+<head>
+        <meta charset="UTF-8">
+        <title>Bnw Replies</title>
+		<link rel="stylesheet" href="/bower_components/flatstrap/dist/css/bootstrap.min.css" media="all">
+		<link rel="stylesheet" href="/bower_components/flatstrap/dist/css/bootstrap-theme.min.css" media="all">
+		<link rel="stylesheet" href="/styles.css" media="all">
+		<script src="/bower_components/angular/angular.min.js"></script>
+		<script src="/bower_components/angular-infinite-scroll/src/infinite-scroll.js"></script>
+		<script src="/scripts.js"></script>
+</head>
+<body>
+		<div class="container" ng-controller="Replies">
+				<div class="popover right" ng-repeat="reply in replies" infinite-scroll="load()" threshold="100" can-load="!finish">
+						<img class="avatar" ng-src="https://bnw.im/u/{{reply.user}}/avatar/thumb" alt="{{reply.user}}">
+		                <div class="arrow"></div>
+						<h3 class="popover-title">
+								<a href="https://meow.bnw.im/u/{{reply.user}}">@{{reply.user}}</a>
+								<a class="pull-right" href="https://meow.bnw.im/p/{{reply.id.replace('/', '#')}}">#{{reply.id}}</a>
+						</h3>
+						<div class="popover-content">
+								<p ng-repeat="p in reply.text.split('\n')">{{p}}</p>
+						</div>
+		        </div>
+				<p ng-show="finish">Поздравляем! Вы доскроллили до начала времен.</p>
+		</div>
+</body>
+</html>

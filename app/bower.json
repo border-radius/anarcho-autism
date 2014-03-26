@@ -1,0 +1,20 @@
+{
+  "name": "bnw-talks",
+  "version": "0.0.0",
+  "authors": [
+    "border-radius <pharshmaster@gmail.com>"
+  ],
+  "license": "Public Domain",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-infinite-scroll": "sparkalow/angular-infinite-scroll",
+    "angular": "~1.2.15",
+    "flatstrap": "~3.1.1"
+  }
+}

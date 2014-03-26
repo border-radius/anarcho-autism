@@ -1,0 +1,27 @@
+.container {
+	margin-top: 25px;
+}
+
+.popover.right {
+	margin-left: 65px;
+	margin-bottom: 25px;
+	max-width: 500px;
+	display: block;
+	position: relative;
+}
+
+.popover.right > .arrow {
+	top: 50px;
+}
+
+.avatar {
+	width: 48px;
+	position: absolute;
+	top: 26px;
+	left: -65px;
+	border-radius: 4px;
+}
+
+.popover-title a {
+	font-size: 13px;
+}
