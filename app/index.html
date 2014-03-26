@@ -10,9 +10,9 @@
 		<script src="/bower_components/angular-infinite-scroll/src/infinite-scroll.js"></script>
 		<script src="/scripts.js"></script>
 </head>
-<body>
-		<div class="container" ng-controller="Replies">
-				<div class="popover right" ng-repeat="reply in replies" infinite-scroll="load()" threshold="100" can-load="!finish">
+<body ng-controller="Replies" infinite-scroll="load()" threshold="100" can-load="!finish">
+		<div class="container">
+				<div class="popover right" ng-repeat="reply in replies">
 						<img class="avatar" ng-src="https://bnw.im/u/{{reply.user}}/avatar/thumb" alt="{{reply.user}}">
 		                <div class="arrow"></div>
 						<h3 class="popover-title">
