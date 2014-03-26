@@ -22,7 +22,8 @@
 								<p ng-repeat="p in reply.text|lines track by $index">{{p}}</p>
 						</div>
 		        </div>
-				<p ng-show="finish">Поздравляем! Вы доскроллили до начала времен.</p>
+				<p class="center" ng-hide="finish"><button type="button" class="btn btn-success" ng-click="load()">Еще</button></p>
+				<p class="center" ng-show="finish">Поздравляем! Вы доскроллили до начала времен.</p>
 		</div>
 </body>
 </html>
