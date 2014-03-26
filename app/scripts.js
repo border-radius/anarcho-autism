@@ -1,4 +1,4 @@
-var app = angular.module('bnw-replies', ['infiniteScroll']);
+var app = angular.module('bnw-replies', []);
 
 app.filter('lines', function () {
 	return function (text) {

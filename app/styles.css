@@ -1,13 +1,3 @@
-html {
-	height: 100%;
-	overflow: hidden;
-}
-
-body {
-	height: 100%;
-	overflow-y: scroll;
-}
-
 .container {
 	width: 565px;
 	margin-top: 25px;

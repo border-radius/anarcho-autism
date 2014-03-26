@@ -7,10 +7,9 @@
 		<link rel="stylesheet" href="/bower_components/flatstrap/dist/css/bootstrap-theme.min.css" media="all">
 		<link rel="stylesheet" href="/styles.css" media="all">
 		<script src="/bower_components/angular/angular.min.js"></script>
-		<script src="/bower_components/angular-infinite-scroll/src/infinite-scroll.js"></script>
 		<script src="/scripts.js"></script>
 </head>
-<body ng-controller="Replies" infinite-scroll="load()" threshold="100" can-load="!finish">
+<body ng-controller="Replies">
 		<div class="container">
 				<div class="popover right" ng-repeat="reply in replies">
 						<img class="avatar" ng-src="https://bnw.im/u/{{reply.user}}/avatar/thumb" alt="{{reply.user}}">
