@@ -4,29 +4,29 @@
         <meta charset="UTF-8">
         <title>Bnw Replies</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
-		<link rel="stylesheet" href="/bower_components/flatstrap/dist/css/bootstrap.min.css" media="all">
-		<link rel="stylesheet" href="/bower_components/flatstrap/dist/css/bootstrap-theme.min.css" media="all">
 		<link rel="stylesheet" href="/styles.css" media="all">
 		<script src="/bower_components/angular/angular.min.js"></script>
+		<script src="/bower_components/moment/moment.js"></script>
 		<script src="/scripts.js"></script>
 </head>
 <body ng-controller="Replies">
 		<div class="container">
-				<div class="popover right" ng-repeat="reply in replies">
-						<a class="avatar" href="https://meow.bnw.im/u/{{reply.user}}">
-							<img ng-src="https://bnw.im/u/{{reply.user}}/avatar/thumb" alt="{{reply.user}}">
-						</a>
-		                <div class="arrow"></div>
-						<h3 class="popover-title">
-								<a href="https://meow.bnw.im/u/{{reply.user}}">@{{reply.user}}</a>
-								<a class="pull-right" href="https://meow.bnw.im/p/{{reply.id.replace('/', '#')}}">#{{reply.id}}</a>
-						</h3>
-						<div class="popover-content">
-								<p class="greentext" ng-repeat="p in reply.replytotext|lines">&gt;{{p}}</p>
-								<p ng-repeat="p in reply.text|lines track by $index">{{p}}</p>
+				<div class="reply" ng-repeat="reply in replies">
+						<div class="quote">
+							<p ng-repeat="p in reply.replytotext|lines track by $index">{{p}}</p>
+						</div>
+						<div class="text">
+							<a class="userpic" href="https://meow.bnw.im/u/{{reply.user}}">
+								<img src="https://bnw.im/u/{{reply.user}}/avatar/thumb" alt="@{{reply.user}}">
+							</a>
+							<p ng-repeat="p in reply.text|lines track by $index">{{p}}</p>
+						</div>
+						<div class="meta">
+							<a class="user" href="https://meow.bnw.im/u/{{reply.user}}">@{{reply.user}}</a>
+							<a class="date" href="https://meow.bnw.im/p/{{reply.id.replace('/', '#')}}">about {{reply.date|moment}}</a>
 						</div>
 		        </div>
-				<p class="center" ng-hide="finish"><button type="button" class="btn btn-success" ng-click="load()">Еще</button></p>
+				<p class="center" ng-hide="finish || !replies.length"><button type="button" class="btn btn-success" ng-click="load()">Еще</button></p>
 				<p class="center" ng-show="finish">Поздравляем! Вы доскроллили до начала времен.</p>
 		</div>
 </body>

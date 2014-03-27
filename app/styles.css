@@ -1,46 +1,97 @@
-.container {
-	max-width: 565px;
-	margin-top: 25px;
+@import url(http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,cyrillic);
+
+body, button {
+	font: 14px/1.4 'Open Sans', Arial, sans-serif;
 }
 
-.popover.right {
-	margin-left: 65px;
-	margin-bottom: 25px;
-	max-width: 500px;
-	display: block;
+.container {
+	margin: 0 auto;
+	max-width: 550px;
+}
+
+div {
+	box-sizing: border-box;
+}
+
+.reply {
+	margin: 40px 0 40px 50px;
+	max-width: 450px;
+}
+
+.quote, .meta {
+	margin: 0 10px;
+	max-width: 430px;
+	padding: 1px 15px;
+	border-radius: 8px 8px 0 0;
+	color: #666;
+	border: 1px solid #ddd;
+	border-bottom: 0 none;
+}
+
+.meta {
+	padding: 5px 8px 5px 15px;
+	width: 100%;
+	background: #eee;
+	border: 0 none;
+	border-radius: 0 0 8px 8px;
+	line-height: 34px;
+	display: table;
+}
+
+.text {
+	padding: 7px 15px;
+	background: #2862CA;
+	color: #fff;
+	border-radius: 8px;
 	position: relative;
 }
 
-.popover-content {
-	overflow: hidden;
-}
-
-.popover.right > .arrow {
-	top: 50px;
-}
-
-.avatar {
-	width: 48px;
+.text:after {
+	content: '';
+	width: 0;
+	height: 0;
+	display: block;
+	border-width: 6px 6px 6px 0;
+	border-style: solid;
+	border-color: transparent #2862CA transparent transparent;
 	position: absolute;
 	top: 26px;
-	left: -65px;
+	left: -6px;
+}
+
+.userpic {
+	width: 48px;
+	position: absolute;
+	top: 6px;
+	left: -62px;
 	text-align: center;
 }
 
-.avatar img {
+.userpic img {
 	max-width: 48px;
 	max-height: 48px;
 	border-radius: 4px;
 }
 
-.popover-title a {
-	font-size: 13px;
+.user {
+	color: #5565B1;
+	text-decoration: none;
+}
+
+.date {
+	margin-left: 5px;
+	color: #666;
+	text-decoration: none;
+}
+
+.btn {
+	padding: 3px 12px 5px;
+	background: #fff;
+	color: #2862CA;
+	border: 1px solid #2862CA;
+	border-radius: 4px;
 }
 
 .center {
 	text-align: center;
-}
-
-.greentext {
-	color: green;
 }

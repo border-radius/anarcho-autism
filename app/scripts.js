@@ -1,5 +1,11 @@
 var app = angular.module('bnw-replies', []);
 
+app.filter('moment', function () {
+	return function (date) {
+		return moment(date, 'X').fromNow();
+	};
+});
+
 app.filter('lines', function () {
 	return function (text) {
 		return text.replace(/\n+/g, '\n').replace(/(^\n|\n$)/g, '').split('\n');
