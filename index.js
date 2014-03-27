@@ -14,7 +14,9 @@ var initWS = function () {
 		reply.save(err);
 	});
 	
-	ws.on('close', initWS);
+	ws.on('close', function () {
+		setTimeout(initWS, 1000);
+	});
 };
 initWS();
 
