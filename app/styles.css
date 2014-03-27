@@ -30,12 +30,10 @@ div {
 
 .meta {
 	padding: 5px 8px 5px 15px;
-	width: 100%;
 	background: #eee;
 	border: 0 none;
 	border-radius: 0 0 8px 8px;
 	line-height: 34px;
-	display: table;
 }
 
 .text {
