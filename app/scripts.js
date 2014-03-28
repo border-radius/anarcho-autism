@@ -1,17 +1,18 @@
 var app = angular.module('bnw-replies', []);
 
-app.directive('autoscroll', function () {
+app.directive('autoscroll', function ($timeout) {
 	var height = 0;
+	var length = 0;
 
 	return function (scope, elem, attrs) {
 		scope.$watch(attrs.autoscroll, function (n, o) {
-			setTimeout(function () {
+			$timeout(function () {
 				var change = document.documentElement.scrollHeight - height;
 				if (n.length - o.length == 1) {
 					document.documentElement.scrollTop += change;
 				}
 				height = document.documentElement.scrollHeight;
-			}, 200);
+			});
 		}, true);
 	};
 });
