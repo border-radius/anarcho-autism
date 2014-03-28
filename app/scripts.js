@@ -1,5 +1,21 @@
 var app = angular.module('bnw-replies', []);
 
+app.directive('autoscroll', function () {
+	var height = 0;
+
+	return function (scope, elem, attrs) {
+		scope.$watch(attrs.autoscroll, function (n, o) {
+			setTimeout(function () {
+				var change = document.documentElement.scrollHeight - height;
+				if (n.length - o.length == 1) {
+					document.documentElement.scrollTop += change;
+				}
+				height = document.documentElement.scrollHeight;
+			}, 200);
+		}, true);
+	};
+});
+
 app.filter('moment', function () {
 	return function (date) {
 		return moment(date, 'X').fromNow();
