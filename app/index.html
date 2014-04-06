@@ -10,7 +10,7 @@
 		<script src="/scripts.js"></script>
 </head>
 <body>
-		<div class="container" ng-controller="Replies" autoscroll="replies">
+		<div class="container" ng-controller="Replies" autoscroll="replies" infinitescroll="load()">
 			<div class="replies">
 				<div class="reply" ng-repeat="reply in replies">
 						<div class="quote">
@@ -27,8 +27,6 @@
 							<a class="date" href="https://meow.bnw.im/p/{{reply.id.replace('/', '#')}}">about {{reply.date|moment}}</a>
 						</div>
 		        </div>
-				<p class="center" ng-hide="finish || !replies.length"><button type="button" class="btn btn-success" ng-click="load()">Еще</button></p>
-				<p class="center" ng-show="finish">Поздравляем! Вы доскроллили до начала времен.</p>
 			</div>
 		</div>
 </body>

@@ -2,18 +2,27 @@ var app = angular.module('bnw-replies', []);
 
 app.directive('autoscroll', function ($timeout) {
 	return function (scope, elem, attrs) {
-		elem = elem[0];
-		var height = elem.scrollHeight;
+		var height = elem[0].scrollHeight;
 
 		scope.$watch(attrs.autoscroll, function (n, o) {
 			$timeout(function () {
-				var change = elem.scrollHeight - height;
+				var change = elem[0].scrollHeight - height;
 				if (n.length - o.length == 1) {
-					elem.scrollTop += change;
+					elem[0].scrollTop += change;
 				}
-				height = elem.scrollHeight;
+				height = elem[0].scrollHeight;
 			});
 		}, true);
+	};
+});
+
+app.directive('infinitescroll', function () {
+	return function (scope, elem, attrs) {
+		elem.on('scroll', function () {
+			if (elem[0].scrollHeight - elem[0].scrollTop < screen.height + 150) {
+				scope.$apply(attrs.infinitescroll);
+			}
+		});
 	};
 });
 
@@ -44,10 +53,19 @@ app.controller('Replies', function ($scope, $http) {
 	initWS();
 
 	$scope.load = function () {
+		if ($scope.loading) return;
+
+		$scope.loading = true;
+
 		$http.get('/comments?skip='+$scope.replies.length)
 		.success(function (replies) {
-			if (!replies.length) return ($scope.finish = true);
-			$scope.replies = $scope.replies.concat(replies);
+			if (!replies.length) {
+				$scope.finish = true;
+			} else {
+				$scope.replies = $scope.replies.concat(replies);
+			}
+		}).then(function () {
+			$scope.loading = false;
 		});
 	};
 	$scope.load();
