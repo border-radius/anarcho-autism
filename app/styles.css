@@ -1,10 +1,21 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,cyrillic);
 
+html, body {
+	margin: 0;
+	height: 100%;
+	overflow: hidden;
+}
+
 body, button {
 	font: 14px/1.4 'Open Sans', Arial, sans-serif;
 }
 
 .container {
+	height: 100%;
+	overflow-y: scroll;
+}
+
+.replies {
 	margin: 0 auto;
 	max-width: 560px;
 }

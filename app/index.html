@@ -9,8 +9,9 @@
 		<script src="/bower_components/moment/moment.js"></script>
 		<script src="/scripts.js"></script>
 </head>
-<body ng-controller="Replies" autoscroll="replies">
-		<div class="container">
+<body>
+		<div class="container" ng-controller="Replies" autoscroll="replies">
+			<div class="replies">
 				<div class="reply" ng-repeat="reply in replies">
 						<div class="quote">
 							<p ng-repeat="p in reply.replytotext|lines track by $index">{{p}}</p>
@@ -28,6 +29,7 @@
 		        </div>
 				<p class="center" ng-hide="finish || !replies.length"><button type="button" class="btn btn-success" ng-click="load()">Еще</button></p>
 				<p class="center" ng-show="finish">Поздравляем! Вы доскроллили до начала времен.</p>
+			</div>
 		</div>
 </body>
 </html>
