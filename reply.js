@@ -1,8 +1,9 @@
 var mongoose = require('mongoose');
+var request = require('request');
 
 mongoose.connect('mongodb://localhost/bnw-talks');
 
-module.exports = mongoose.model('Reply', {
+var Reply = new mongoose.Schema({
 	anonymous: Boolean,
 	date: Number,
 	id: {
@@ -16,5 +17,32 @@ module.exports = mongoose.model('Reply', {
 	replyto: String,
 	replytotext: String,
 	text: String,
-	user: String
+	user: String,
+  mentions: [String]
 });
+
+Reply.pre('save', function (next) {
+  this.mentions = this.message.match(/\@([\-0-9A-z]+)/ig) || [];
+
+  var that = this;
+
+  if (this.replyto) return next();
+
+  request('https://bnw.im/api/show?message=' + this.id.split('/')[0], function (e, res, body) {
+    if (!e && res.statusCode !== 200) {
+      e = new Error ('BNW returned status code ' + res.statusCode);
+      e.res = res;
+    }
+
+    if (e) {
+      console.log(e);
+      return next(e);
+    }
+
+    that.mentions.push(JSON.parse(body).messages[0].user);
+
+    next();
+  });
+});
+
+module.exports = mongoose.model('Reply', Reply);

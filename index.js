@@ -24,8 +24,13 @@ var app = express();
 
 app.use(express.static(__dirname + '/app'));
 
-app.get('/comments', function (req, res) {
-	Reply.find().
+(function (ctrl) {
+	app.get('/comments', ctrl);
+	app.get('/comments/:user', ctrl);
+})(function (req, res) {
+	((req.params.user) ? Reply.find({
+		mentions: req.params.user
+	}) : Reply.find()).
 	sort({date: -1}).
 	limit(20).
 	skip(req.param('skip')|0).
