@@ -55,6 +55,7 @@ app.filter('lines', function () {
 
 app.controller('Top', function ($scope, $http) {
 	$scope.load = function() {};
+	$scope.top = true;
 
 	$http.get('/api/top').success(function (replies) {
 		$scope.replies = replies;
