@@ -10,22 +10,13 @@ body, button {
 	font: 14px/1.4 'Open Sans', Arial, sans-serif;
 }
 
-html {
-	background: url('bg.jpg') no-repeat center center;
-	background-size: cover;
-}
-
-body {
-	background: url('bg2.png') rgba(0, 0, 0, 0.4);
-}
-
 .container {
 	height: 100%;
 	overflow-y: scroll;
 }
 
 header {
-	display: none;
+	text-align: center;
 }
 
 .replies {
@@ -35,30 +26,18 @@ header {
 }
 
 @media (min-width: 1380px) {
-	header {
-		display: block;
-		position: fixed;
-		top: 30%;
-		left: 50px;
-	}
+	
 
 	header h1 {
 		margin: 0;
 		font-size: 72px;
 		font-weight: 900;
-		color: rgba(255, 255, 255, 0.5);
 	}
 
 	header h2 {
 		font-size: 24px;
 		font-weight: normal;
-		color: rgba(0, 0, 0, 0.8);
-		text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
-	}
-
-	.replies {
-		margin: 0 50px 0 0;
-		float: right;
+		color: #999;
 	}
 }
 
@@ -87,21 +66,23 @@ div {
 }
 
 .quote {
-	background: rgba(255, 255, 255, 0.6);
+	border: 1px solid #999;
+	border-bottom: none;
+	color: #666;
 }
 
 .meta {
 	padding: 5px 8px 5px 15px;
-	background: rgba(0, 0, 0, 0.4);
-	border: 0 none;
+	border: 1px solid #bbb;
+	border-top: none;
 	border-radius: 0 0 8px 8px;
 	line-height: 34px;
 }
 
 .text {
 	padding: 7px 15px;
-	background: #2862CA;
-	color: #fff;
+	border: 3px solid #2862CA;
+	color: #333;
 	border-radius: 8px;
 	position: relative;
 }
@@ -116,7 +97,7 @@ div {
 	border-color: transparent #2862CA transparent transparent;
 	position: absolute;
 	top: 26px;
-	left: -6px;
+	left: -8px;
 }
 
 .userpic {
@@ -131,10 +112,6 @@ div {
 	max-width: 48px;
 	max-height: 48px;
 	border-radius: 4px;
-	background: rgba(0, 0, 0, 0.5);
-	-webkit-box-shadow: 1px 1px 3px 0 #000;
-	-moz-box-shadow: 1px 1px 3px 0 #000;
-	box-shadow: 1px 1px 3px 0 #000;
 }
 
 .user {

@@ -16,9 +16,8 @@
 	<script type="text/ng-template" id="feed.html">
 		<div class="container" autoscroll="replies" infinitescroll="load()">
 			<header>
-				<h1 ng-hide="user">Анархо-аутизм</h1>
+				<h1 ng-hide="user">Не твой личный анархо-аутизм</h1>
 				<h1 ng-show="user">Это твой аутизм, {{user}}</h1>
-				<h2>У нас есть аутизм для тебя и твоих друзей!</h2>
 			</header>
 			<div class="replies">
 				<div class="reply" ng-repeat="reply in replies">
