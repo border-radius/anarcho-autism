@@ -1,13 +1,16 @@
 var app = angular.module('bnw-replies', ['ngRoute']);
 
 app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-	$routeProvider.when('/', {
+	var ctrl = {
 		templateUrl: 'feed.html',
 		controller: 'Replies'
-	}).when('/for/:user', {
-		templateUrl: 'feed.html',
-		controller: 'Replies'
-	});
+	}
+	$routeProvider.when('/', ctrl)
+				  .when('/for/:user', ctrl)
+				  .when('/top', {
+				  	templateUrl: 'feed.html',
+				  	controller: 'Top'
+				  });
 
 	$locationProvider.html5Mode(true);
 }]);
@@ -48,6 +51,14 @@ app.filter('lines', function () {
 	return function (text) {
 		return text.replace(/\n+/g, '\n').replace(/(^\n|\n$)/g, '').split('\n');
 	};
+});
+
+app.controller('Top', function ($scope, $http) {
+	$scope.load = function() {};
+
+	$http.get('/api/top').success(function (replies) {
+		$scope.replies = replies;
+	});
 });
 
 app.controller('Replies', function ($scope, $http, $routeParams, $timeout) {

@@ -24,7 +24,10 @@ var app = express();
 
 app.use(express.static(__dirname + '/app'));
 
-app.get('/for/:user', function (req, res) {
+(function (ctrl) {
+	app.get('/for/:user', ctrl);
+	app.get('/top', ctrl);
+})(function (req, res) {
   res.sendfile(__dirname + '/app/index.html');
 });
 
@@ -41,6 +44,49 @@ app.get('/for/:user', function (req, res) {
 	exec(function (e, replies) {
 		if (e) return res.status(500).send();
 		res.json(replies);
+	});
+});
+
+app.get('/api/top', function (req, res) {
+	Reply.aggregate([
+		{
+			$match: {
+				date: {
+					$gt: new Date()/1000 - 24 * 3600
+				},
+				replyto: {
+					$ne: null
+				}
+			}
+		},
+		{
+			$group: {
+				_id: "$replyto",
+				count: {
+					$sum: 1
+				}
+			}
+		},
+		{
+			$sort: {
+				count: -1
+			}
+		},
+		{
+			$limit: 10
+		}
+	], function (e, replyto) {
+		if (e) return res.status(500).send(e);
+		Reply.find({
+			id: {
+				$in: replyto.map(function (reply) {
+					return reply._id;
+				})
+			}
+		}, function (e, replies) {
+			if (e) return res.status(500).send(e);
+			res.json(replies);
+		})
 	});
 });
 
