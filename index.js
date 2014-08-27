@@ -24,6 +24,10 @@ var app = express();
 
 app.use(express.static(__dirname + '/app'));
 
+app.get('/for/:user', function (req, res) {
+  res.sendfile(__dirname + '/app/index.html');
+});
+
 (function (ctrl) {
 	app.get('/comments', ctrl);
 	app.get('/comments/:user', ctrl);

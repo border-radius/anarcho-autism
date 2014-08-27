@@ -22,7 +22,9 @@ var Reply = new mongoose.Schema({
 });
 
 Reply.pre('save', function (next) {
-  this.mentions = this.message.match(/\@([\-0-9A-z]+)/ig) || [];
+  this.mentions = (this.text.match(/\@([\-0-9A-z]+)/ig) || []).map(function (mention) {
+    return mention.replace(/^\@/, '');
+  });
 
   var that = this;
 

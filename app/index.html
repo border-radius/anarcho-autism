@@ -6,14 +6,19 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
 		<link rel="stylesheet" href="/styles.css" media="all">
 		<script src="/bower_components/angular/angular.min.js"></script>
+		<script src="/bower_components/angular-route/angular-route.min.js"></script>
 		<script src="/bower_components/moment/moment.js"></script>
 		<script src="/scripts.js"></script>
 </head>
 <body>
-		<div class="container" ng-controller="Replies" autoscroll="replies" infinitescroll="load()">
+	<div ng-view></div>
+		
+	<script type="text/ng-template" id="feed.html">
+		<div class="container" autoscroll="replies" infinitescroll="load()">
 			<header>
-				<h1>Анархо-аутизм</h1>
-				<h2>Ни одно государство в мире не в силах запретить твой аутизм</h2>
+				<h1 ng-hide="user">Анархо-аутизм</h1>
+				<h1 ng-show="user">Это твой аутизм, {{user}}</h1>
+				<h2>У нас есть аутизм для тебя и твоих друзей!</h2>
 			</header>
 			<div class="replies">
 				<div class="reply" ng-repeat="reply in replies">
@@ -31,7 +36,8 @@
 							<a class="date" href="https://meow.bnw.im/p/{{reply.id.replace('/', '#')}}">about {{reply.date|moment}}</a>
 						</div>
 		        </div>
-			</div>
+			</div>	
 		</div>
+	</script>
 </body>
 </html>

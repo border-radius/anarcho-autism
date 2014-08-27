@@ -1,4 +1,16 @@
-var app = angular.module('bnw-replies', []);
+var app = angular.module('bnw-replies', ['ngRoute']);
+
+app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+	$routeProvider.when('/', {
+		templateUrl: 'feed.html',
+		controller: 'Replies'
+	}).when('/for/:user', {
+		templateUrl: 'feed.html',
+		controller: 'Replies'
+	});
+
+	$locationProvider.html5Mode(true);
+}]);
 
 app.directive('autoscroll', function ($timeout) {
 	return function (scope, elem, attrs) {
@@ -7,7 +19,7 @@ app.directive('autoscroll', function ($timeout) {
 		scope.$watch(attrs.autoscroll, function (n, o) {
 			$timeout(function () {
 				var change = elem[0].scrollHeight - height;
-				if (n.length - o.length == 1) {
+				if ((n || []).length - (o || []).length == 1) {
 					elem[0].scrollTop += change;
 				}
 				height = elem[0].scrollHeight;
@@ -38,15 +50,28 @@ app.filter('lines', function () {
 	};
 });
 
-app.controller('Replies', function ($scope, $http) {
+app.controller('Replies', function ($scope, $http, $routeParams, $timeout) {
+	$scope.user = $routeParams.user;
 	$scope.replies = [];
+
+	var addReply = function (reply) {
+		$timeout(function () {
+			$scope.replies.unshift(reply);
+		});
+	};
 	
 	var initWS = function () {
 		var ws = new WebSocket('wss://bnw.im/comments/ws');
 		ws.onmessage = function (event) {
-			$scope.$apply(function () {
-				$scope.replies = [JSON.parse(event.data)].concat($scope.replies);
-			});
+			var reply = JSON.parse(event.data);
+			if (!$scope.user) return addReply(reply);
+			if ((reply.text.match(/\@([\-0-9A-z]+)/ig) || []).indexOf('@' + $scope.user) > -1) {
+				addReply(reply);
+			} else if (!reply.replyto) {
+				$http.get('https://bnw.im/api/show?message=' + reply.id.split('/')[0]).success(function (res) {
+					if (res.messages[0].user == $scope.user) addReply(reply);
+				});
+			}
 		};
 		ws.onclose = initWS;
 	};
@@ -57,7 +82,7 @@ app.controller('Replies', function ($scope, $http) {
 
 		$scope.loading = true;
 
-		$http.get('/comments?skip='+$scope.replies.length)
+		$http.get('/comments' + (($scope.user) ? '/' + $scope.user : '') + '?skip='+$scope.replies.length)
 		.success(function (replies) {
 			if (!replies.length) {
 				$scope.finish = true;
