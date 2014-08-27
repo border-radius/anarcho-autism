@@ -36,3 +36,5 @@ app.get('/comments', function (req, res) {
 });
 
 app.listen(8000);
+
+console.log('Listening ', 8000, ' launched at ', new Date());
