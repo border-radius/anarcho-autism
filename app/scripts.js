@@ -109,8 +109,9 @@ app.controller('Replies', function ($scope, $http, $routeParams, $timeout) {
 });
 
 app.controller('For', ['$scope', '$location', function($scope, $location) {
-	$scope.name = 'anonymous';
+	$scope.name = localStorage['last'] || 'anonymous';
 	$scope.for = function (name) {
+		localStorage['last'] = name;
 		$location.url('/for/' + name);
 	};
 }]);
