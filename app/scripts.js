@@ -107,3 +107,10 @@ app.controller('Replies', function ($scope, $http, $routeParams, $timeout) {
 	};
 	$scope.load();
 });
+
+app.controller('For', ['$scope', '$location', function($scope, $location) {
+	$scope.name = 'anonymous';
+	$scope.for = function (name) {
+		$location.url('/for/' + name);
+	};
+}]);

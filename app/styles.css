@@ -6,7 +6,7 @@ html, body, body > div {
 	overflow: hidden;
 }
 
-body, button {
+body, button, input {
 	font: 14px/1.4 'Open Sans', Arial, sans-serif;
 }
 
@@ -135,4 +135,47 @@ div {
 
 .center {
 	text-align: center;
+}
+
+.nav {
+	list-style-type: none;
+}
+
+.nav li {
+	margin: 0 15px;
+	display: inline-block;
+}
+
+.nav a {
+	color: #2C63C5;
+}
+
+.nav a:hover {
+	color: #4883EE;
+}
+
+.nav input {
+	padding: 0 5px;
+	width: 100px;
+	border: 0 none;
+	border-bottom: 1px solid #2C63C5;
+	color: #2C63C5;
+}
+
+.nav button {
+	padding: 5px 12px;
+	background: none;
+	border: 1px solid #2C63C5;
+	border-radius: 4px;
+	color: #2C63C5;
+}
+
+.nav input:focus, .nav button:focus {
+	outline: 0 none;
+	border-color: #4883EE;
+	color: #4883EE;
+}
+
+.nav button:active {
+	opacity: 0.5;
 }
