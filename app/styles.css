@@ -179,3 +179,8 @@ div {
 .nav button:active {
 	opacity: 0.5;
 }
+
+footer {
+	margin-top: 25px;
+	text-align: center;
+}
