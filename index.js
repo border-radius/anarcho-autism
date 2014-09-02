@@ -4,7 +4,9 @@ var ws = require('./ws');
 
 ws('wss://bnw.im/comments/ws', function (message, flags) {
 	var reply = new Reply(JSON.parse(message));
-	reply.save(E);
+	reply.save(function (e) {
+		if (e) console.log(e);
+	});
 });
 
 var app = express();
