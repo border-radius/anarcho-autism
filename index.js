@@ -1,24 +1,11 @@
-var WebSocket = require('ws');
 var Reply = require('./reply');
 var express = require('express');
+var ws = require('./ws');
 
-var err = function (e) {
-	if (e) console.log(e);
-};
-
-var initWS = function () {
-	var ws = new WebSocket('wss://bnw.im/comments/ws');
-
-	ws.on('message', function (message, flags) {
-		var reply = new Reply(JSON.parse(message));
-		reply.save(err);
-	});
-	
-	ws.on('close', function () {
-		setTimeout(initWS, 1000);
-	});
-};
-initWS();
+ws('wss://bnw.im/comments/ws', function (message, flags) {
+	var reply = new Reply(JSON.parse(message));
+	reply.save(E);
+});
 
 var app = express();
 
