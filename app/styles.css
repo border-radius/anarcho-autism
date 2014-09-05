@@ -36,8 +36,7 @@ div {
 	max-width: 550px;
 }
 
-.quote, .meta {
-	margin: 0 10px;
+.quote {
 	max-width: 430px;
 	padding: 1px 15px;
 	border-radius: 8px 8px 0 0;
@@ -51,14 +50,15 @@ div {
 
 .quote {
 	border-bottom: none;
-	color: #666;
 }
 
-.meta {
-	padding: 5px 8px 5px 15px;
-	border-top: none;
-	border-radius: 0 0 8px 8px;
-	line-height: 34px;
+.quote a {
+	color: #666;
+	text-decoration: none;
+}
+
+.quote a:hover {
+	text-decoration: underline;
 }
 
 .text {
@@ -81,18 +81,6 @@ div {
 	max-width: 48px;
 	max-height: 48px;
 	border-radius: 4px;
-}
-
-.user {
-	color: #5565B1;
-	text-decoration: none;
-}
-
-.date {
-	margin-left: 5px;
-	float: right;
-	color: #666;
-	text-decoration: none;
 }
 
 .btn {

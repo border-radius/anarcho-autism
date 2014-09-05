@@ -39,17 +39,15 @@
 			<div class="replies">
 				<div class="reply" ng-repeat="reply in replies">
 						<div class="quote">
-							<p ng-repeat="p in reply.replytotext|lines track by $index">{{p}}</p>
+							<p>
+								<a href="https://meow.bnw.im/p/{{reply.id.replace('/', '#')}}">{{reply.replytotext}}</a>
+							</p>
 						</div>
 						<div class="text">
 							<a class="userpic" href="https://meow.bnw.im/u/{{reply.user}}">
 								<img src="https://bnw.im/u/{{reply.user}}/avatar/thumb" alt="@{{reply.user}}">
 							</a>
 							<p ng-repeat="p in reply.text|lines track by $index">{{p}}</p>
-						</div>
-						<div class="meta">
-							<a class="user" href="https://meow.bnw.im/u/{{reply.user}}">@{{reply.user}}</a>
-							<a class="date" href="https://meow.bnw.im/p/{{reply.id.replace('/', '#')}}">about {{reply.date|moment}}</a>
 						</div>
 		        </div>
 			</div>
