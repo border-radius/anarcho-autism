@@ -13,6 +13,7 @@ body, button, input {
 .container {
 	height: 100%;
 	overflow-y: scroll;
+	background: #fff;
 }
 
 header {
