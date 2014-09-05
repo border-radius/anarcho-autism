@@ -19,12 +19,13 @@
 				<h1 ng-hide="user || top">Не твой личный <a href="/top">анархо-аутизм</a></h1>
 				<h1 ng-hide="!user || top">Это твой <a href="/">аутизм</a>, {{user}}</h1>
 				<h1 ng-hide="user || !top">Эхо <a href="/">анархии</a></h1>
-				<ul class="nav">
+				<div class="nav">
 					<div ng-controller="For">
 						<form class="personal" ng-submit="for(name)">
 							Аутизм для <input type="text" ng-model="name"> <button role="submit">Заслужить</button>
 						</form>
 					</div>
+				</div>
 			</header>
 			<div class="replies">
 				<div class="reply" ng-repeat="reply in replies">
