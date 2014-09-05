@@ -16,25 +16,15 @@
 	<script type="text/ng-template" id="feed.html">
 		<div class="container" autoscroll="replies" infinitescroll="load()">
 			<header>
-				<h1 ng-hide="user || top">Не твой личный анархо-аутизм</h1>
-				<h1 ng-hide="!user || top">Это твой аутизм, {{user}}</h1>
-				<h1 ng-hide="user || !top">Эхо анархии</h1>
+				<h1 ng-hide="user || top">Не твой личный <a href="/top">анархо-аутизм</a></h1>
+				<h1 ng-hide="!user || top">Это твой <a href="/">аутизм</a>, {{user}}</h1>
+				<h1 ng-hide="user || !top">Эхо <a href="/">анархии</a></h1>
 				<ul class="nav">
-					<li>
-						<a href="/">Последнее</a>
-					</li>
-					<li>
-						<a href="/top">Лучшее</a>
-					</li>
-					<li>
-						<a href="https://github.com/border-radius/anarcho-autism">Свобода</a>
-					</li>
-					<li ng-controller="For">
+					<div ng-controller="For">
 						<form class="personal" ng-submit="for(name)">
-							Аутизм для <input type="text" ng-model="name"> <button role="submit">Получить</button>
+							Аутизм для <input type="text" ng-model="name"> <button role="submit">Заслужить</button>
 						</form>
-					</li>
-				</ul>
+					</div>
 			</header>
 			<div class="replies">
 				<div class="reply" ng-repeat="reply in replies">

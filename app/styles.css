@@ -99,16 +99,11 @@ div {
 	list-style-type: none;
 }
 
-.nav li {
-	margin: 0 15px;
-	display: inline-block;
-}
-
-.nav a {
+h1 a {
 	color: #2C63C5;
 }
 
-.nav a:hover {
+h1 a:hover {
 	color: #4883EE;
 }
 
@@ -136,10 +131,4 @@ div {
 
 .nav button:active {
 	opacity: 0.5;
-}
-
-.personal {
-	padding-left: 10px;
-	border: 1px solid #ddd;
-	border-radius: 4px;
 }
