@@ -33,7 +33,7 @@ div {
 
 .reply {
 	margin: 40px 0 40px 60px;
-	max-width: 450px;
+	max-width: 550px;
 }
 
 .quote, .meta {
@@ -50,14 +50,12 @@ div {
 }
 
 .quote {
-	border: 1px solid #999;
 	border-bottom: none;
 	color: #666;
 }
 
 .meta {
 	padding: 5px 8px 5px 15px;
-	border: 1px solid #bbb;
 	border-top: none;
 	border-radius: 0 0 8px 8px;
 	line-height: 34px;
@@ -65,23 +63,10 @@ div {
 
 .text {
 	padding: 7px 15px;
-	border: 3px solid #2862CA;
 	color: #333;
 	border-radius: 8px;
 	position: relative;
-}
-
-.text:after {
-	content: '';
-	width: 0;
-	height: 0;
-	display: block;
-	border-width: 6px 6px 6px 0;
-	border-style: solid;
-	border-color: transparent #2862CA transparent transparent;
-	position: absolute;
-	top: 26px;
-	left: -8px;
+	background: #eee;
 }
 
 .userpic {
@@ -105,6 +90,7 @@ div {
 
 .date {
 	margin-left: 5px;
+	float: right;
 	color: #666;
 	text-decoration: none;
 }
