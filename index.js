@@ -1,6 +1,7 @@
 var Reply = require('./reply');
 var express = require('express');
 var ws = require('./ws');
+var RSS = require('rss');
 
 ws('wss://bnw.im/comments/ws', function (message, flags) {
 	var reply = new Reply(JSON.parse(message));
@@ -35,6 +36,31 @@ app.get('/comments/:user', function (req, res) {
 	getComments(Reply.find({ mentions: req.params.user }), req.param('skip'), function (e, replies) {
 		if (e) return res.status(500).send();
 		res.json(replies);
+	});
+});
+
+app.get('/comments/:user/rss', function (req, res) {
+	getComments(Reply.find({ mentions: req.params.user }), 0, function (e, replies) {
+		if (e) return res.status(500).send();
+		var last = replies[0] || {},
+				feed = new RSS({
+					title: 'Аутизм для ' + req.params.user,
+					feed_url: 'http://autism.anarchy.info/for/' + req.params.user + '.rss',
+					site_url: 'http://autism.anarchy.info/for/' + req.params.user,
+					pubDate: new Date(last.date * 1000)
+				});
+
+		replies.forEach(function (reply) {
+			feed.item({
+				title: 'Ответ от ' + reply.user,
+				description: reply.text,
+				url: 'https://meow.bnw.im/p/' + reply.id.replace('/', '#'),
+				guid: reply.id,
+				date: new Date(reply.date * 1000)
+			});
+		});
+
+		res.set('Content-type', 'application/rss+xml').send(feed.xml());
 	});
 });
 
