@@ -20,17 +20,19 @@ app.use(express.static(__dirname + '/app'));
   res.sendfile(__dirname + '/app/index.html');
 });
 
-(function (ctrl) {
-	app.get('/comments', ctrl);
-	app.get('/comments/:user', ctrl);
-})(function (req, res) {
-	((req.params.user) ? Reply.find({
-		mentions: req.params.user
-	}) : Reply.find()).
-	sort({date: -1}).
-	limit(20).
-	skip(req.param('skip')|0).
-	exec(function (e, replies) {
+function getComments(query, skip, next) {
+	query.sort({ date: -1	}).limit(20).skip(skip|0).exec(next);
+}
+
+app.get('/comments', function (req, res) {
+	getComments(Reply.find(), req.param('skip'), function (e, replies) {
+		if (e) return res.status(500).send();
+		res.json(replies);
+	});
+});
+
+app.get('/comments/:user', function (req, res) {
+	getComments(Reply.find({ mentions: req.params.user }), req.param('skip'), function (e, replies) {
 		if (e) return res.status(500).send();
 		res.json(replies);
 	});
