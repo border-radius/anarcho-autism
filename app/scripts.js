@@ -71,7 +71,7 @@ app.controller('Replies', function ($scope, $http, $routeParams, $timeout) {
 			$scope.replies.unshift(reply);
 		});
 	};
-	
+
 	var initWS = function () {
 		var ws = new WebSocket('wss://bnw.im/comments/ws');
 		ws.onmessage = function (event) {
@@ -113,5 +113,13 @@ app.controller('For', ['$scope', '$location', function($scope, $location) {
 	$scope.for = function (name) {
 		localStorage['last'] = name;
 		$location.url('/for/' + name);
+	};
+}]);
+
+app.controller('Webui', ['$scope', '$rootScope', function($scope, $rootScope) {
+	$rootScope.defaultui = localStorage['defaultui'] === 'true' ? true : false;
+	$scope.switchui = function () {
+		$rootScope.defaultui = !$rootScope.defaultui;
+		localStorage['defaultui'] = $rootScope.defaultui;
 	};
 }]);

@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div ng-view></div>
-		
+
 	<script type="text/ng-template" id="feed.html">
 		<div class="container" autoscroll="replies" infinitescroll="load()">
 			<header>
@@ -25,17 +25,20 @@
 							Аутизм для <input type="text" ng-model="name"> <button role="submit">Заслужить</button>
 						</form>
 					</div>
+					<div ng-controller="Webui" ng-click="switchui()">
+						{{defaultui ? '&#9744;' : '&#9745;'}} meow
+					</div>
 				</div>
 			</header>
 			<div class="replies">
 				<div class="reply" ng-repeat="reply in replies">
 						<div class="quote">
 							<p>
-								<a href="https://meow.bnw.im/p/{{reply.id.replace('/', '#')}}">{{reply.replytotext}}</a>
+								<a href="https://{{defaultui ? '' : 'meow.'}}bnw.im/p/{{reply.id.replace('/', '#')}}">{{reply.replytotext}}</a>
 							</p>
 						</div>
 						<div class="text">
-							<a class="userpic" href="https://meow.bnw.im/u/{{reply.user}}">
+							<a class="userpic" href="https://{{defaultui ? '' : 'meow.'}}bnw.im/u/{{reply.user}}">
 								<img src="https://bnw.im/u/{{reply.user}}/avatar/thumb" alt="@{{reply.user}}">
 							</a>
 							<p ng-repeat="p in reply.text|lines track by $index">{{p}}</p>
