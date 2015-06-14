@@ -13,7 +13,7 @@ body, button, input {
 .container {
 	height: 100%;
 	overflow-y: scroll;
-	background: #fff;
+	background: #000;
 }
 
 header {
@@ -41,7 +41,7 @@ div {
 	max-width: 430px;
 	padding: 1px 15px;
 	border-radius: 8px 8px 0 0;
-	color: #333;
+	color: #CCCCCC;
 	border-bottom: 0 none;
 }
 
@@ -54,7 +54,7 @@ div {
 }
 
 .quote a {
-	color: #666;
+	color: #999999;
 	text-decoration: none;
 }
 
@@ -64,10 +64,10 @@ div {
 
 .text {
 	padding: 7px 15px;
-	color: #333;
+	color: #CCCCCC;
 	border-radius: 8px;
 	position: relative;
-	background: #eee;
+	background: #111;
 }
 
 .userpic {
@@ -86,9 +86,9 @@ div {
 
 .btn {
 	padding: 3px 12px 5px;
-	background: #fff;
-	color: #2862CA;
-	border: 1px solid #2862CA;
+	background: #000;
+	color: #D79D35;
+	border: 1px solid #D79D35;
 	border-radius: 4px;
 }
 
@@ -101,33 +101,33 @@ div {
 }
 
 h1 a {
-	color: #2C63C5;
+	color: #D39C3A;
 }
 
 h1 a:hover {
-	color: #4883EE;
+	color: #B77C11;
 }
 
 .nav input {
 	padding: 0 5px;
 	width: 100px;
 	border: 0 none;
-	border-bottom: 1px solid #2C63C5;
-	color: #2C63C5;
+	border-bottom: 1px solid #D39C3A;
+	color: #D39C3A;
 }
 
 .nav button {
 	padding: 5px 12px;
 	background: none;
-	border: 1px solid #2C63C5;
+	border: 1px solid #D39C3A;
 	border-radius: 4px;
-	color: #2C63C5;
+	color: #D39C3A;
 }
 
 .nav input:focus, .nav button:focus {
 	outline: 0 none;
-	border-color: #4883EE;
-	color: #4883EE;
+	border-color: #B77C11;
+	color: #B77C11;
 }
 
 .nav button:active {

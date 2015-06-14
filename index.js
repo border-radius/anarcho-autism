@@ -39,7 +39,7 @@ app.get('/comments/:user', function (req, res) {
 	});
 });
 
-app.get('/comments/:user/rss', function (req, res) {
+app.get('/for/:user/rss', function (req, res) {
 	getComments(Reply.find({ mentions: req.params.user }), 0, function (e, replies) {
 		if (e) return res.status(500).send();
 		var last = replies[0] || {},
