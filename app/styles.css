@@ -135,3 +135,19 @@ h1 a:hover {
 .nav button:active {
 	opacity: 0.5;
 }
+
+.webui {
+	margin-top: 15px;
+}
+
+.webui input {
+	width: auto;
+	cursor: pointer;
+	vertical-align: middle;
+	position: relative;
+	bottom: 1px;
+}
+
+.webui label {
+	cursor: pointer;
+}
