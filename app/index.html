@@ -25,8 +25,9 @@
 							Аутизм для <input type="text" ng-model="name"> <button role="submit">Заслужить</button>
 						</form>
 					</div>
-					<div ng-controller="Webui" ng-click="switchui()">
-						{{defaultui ? '&#9744;' : '&#9745;'}} meow
+					<div class="webui">
+						<input type="checkbox" id="webui-checkbox" ng-controller="Webui" ng-checked="!defaultui" ng-click="switchui($event)">
+						<label for="webui-checkbox">meow</label>
 					</div>
 				</div>
 			</header>
