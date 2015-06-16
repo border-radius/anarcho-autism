@@ -118,8 +118,8 @@ app.controller('For', ['$scope', '$location', function($scope, $location) {
 
 app.controller('Webui', ['$scope', '$rootScope', function($scope, $rootScope) {
 	$rootScope.defaultui = localStorage['defaultui'] === 'true' ? true : false;
-	$scope.switchui = function () {
-		$rootScope.defaultui = !$rootScope.defaultui;
+	$scope.switchui = function ($event) {
+		$rootScope.defaultui = !$event.target.checked;
 		localStorage['defaultui'] = $rootScope.defaultui;
 	};
 }]);
