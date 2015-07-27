@@ -117,9 +117,15 @@ app.controller('For', ['$scope', '$location', function($scope, $location) {
 }]);
 
 app.controller('Webui', ['$scope', '$rootScope', function($scope, $rootScope) {
-	$rootScope.defaultui = localStorage['defaultui'] === 'true' ? true : false;
-	$scope.switchui = function ($event) {
-		$rootScope.defaultui = !$event.target.checked;
-		localStorage['defaultui'] = $rootScope.defaultui;
+	$scope.webuilist = [
+		{name: 'meow', url: 'https://meow.bnw.im'},
+		{name: '6nw', url: 'http://6nw.im'},
+		{name: 'default', url: 'https://bnw.im'}
+	];
+	$scope.update = function () {
+		localStorage['webui'] = $scope.webui;
+		$rootScope.webuiurl = $scope.webuilist[$scope.webui].url;
 	};
+	$scope.webui = localStorage['webui'] || '0';
+	$scope.update();
 }]);
