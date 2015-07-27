@@ -124,6 +124,7 @@ h1 a:hover {
 	border: 1px solid #D39C3A;
 	border-radius: 4px;
 	color: #D39C3A;
+	cursor: pointer;
 }
 
 .nav input:focus, .nav button:focus {
@@ -140,14 +141,27 @@ h1 a:hover {
 	margin-top: 15px;
 }
 
-.webui input {
-	width: auto;
+.webui select {
+	padding: 5px 24px 5px 12px;
+	background: none;
+	border: 1px solid #D39C3A;
+	border-radius: 4px;
+	color: #D39C3A;
 	cursor: pointer;
-	vertical-align: middle;
-	position: relative;
-	bottom: 1px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
 }
 
 .webui label {
-	cursor: pointer;
+	position: relative;
+}
+
+.webui label:after {
+	content: '▼';
+	color: #D39C3A;
+	right: 12px;
+	top: 1px;
+	position: absolute;
+	pointer-events: none;
 }

@@ -26,8 +26,9 @@
 						</form>
 					</div>
 					<div class="webui">
-						<input type="checkbox" id="webui-checkbox" ng-controller="Webui" ng-checked="!defaultui" ng-click="switchui($event)">
-						<label for="webui-checkbox">meow</label>
+						<label>
+							<select ng-controller="Webui" ng-options="index as item.name for (index, item) in webuilist" ng-model="webui" ng-change="update()"></select>
+						</label>
 					</div>
 				</div>
 			</header>
@@ -35,11 +36,11 @@
 				<div class="reply" ng-repeat="reply in replies">
 						<div class="quote">
 							<p>
-								<a href="https://{{defaultui ? '' : 'meow.'}}bnw.im/p/{{reply.id.replace('/', '#')}}">{{reply.replytotext}}</a>
+								<a href="{{webuiurl}}/p/{{reply.id.replace('/', '#')}}">{{reply.replytotext}}</a>
 							</p>
 						</div>
 						<div class="text">
-							<a class="userpic" href="https://{{defaultui ? '' : 'meow.'}}bnw.im/u/{{reply.user}}">
+							<a class="userpic" href="{{webuiurl}}/u/{{reply.user}}">
 								<img src="https://bnw.im/u/{{reply.user}}/avatar/thumb" alt="@{{reply.user}}">
 							</a>
 							<p ng-repeat="p in reply.text|lines track by $index">{{p}}</p>
