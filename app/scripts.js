@@ -119,7 +119,7 @@ app.controller('For', ['$scope', '$location', function($scope, $location) {
 app.controller('Webui', ['$scope', '$rootScope', function($scope, $rootScope) {
 	$scope.webuilist = [
 		{name: 'meow', url: 'https://meow.bnw.im'},
-		{name: '6nw', url: 'http://6nw.im'},
+		{name: '6nw', url: 'https://6nw.im'},
 		{name: 'default', url: 'https://bnw.im'}
 	];
 	$scope.update = function () {
